@@ -42,7 +42,7 @@ class Command(BaseCommand):
                     name=product["fields"]["name"],
                     description=product["fields"]["description"],
                     photo=product["fields"]["photo"],
-                    category=Category.objects.get(pk=category["pk"]),
+                    category=Category.objects.get(pk=product["fields"]["category"]),
                     price=product["fields"]["price"],
                     created_at=product["fields"]["created_at"],
                     updated_at=product["fields"]["updated_at"],
