@@ -1,0 +1,26 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Овощи",
+      "description": "Сочные, свежие и полезные. Идеальны для салата, содержат много клетчатки"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Фрукты",
+      "description": "Сочные, сладкие и полезные. Отличная альтернатива десертам"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Ягоды",
+      "description": "Вкусные как у бабушки в деревне"
+    }
+  }
+]
