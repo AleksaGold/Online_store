@@ -6,18 +6,23 @@ from catalog.models import Category, Product
 
 
 class Command(BaseCommand):
+    """Класс для кастомной команды, которая умеет заполнять данные в базу данных,
+    при этом предварительно зачищать ее от старых данных"""
 
     @staticmethod
     def json_read_categories():
+        """Загружает список категорий из файла формата json"""
         with open("category_data.json", "r") as file:
             return json.load(file)
 
     @staticmethod
     def json_read_products():
+        """Загружает список продуктов из файла формата json"""
         with open("product_data.json", "r") as file:
             return json.load(file)
 
     def handle(self, *args, **options):
+        """Команда для заполнения базы данных"""
 
         Category.objects.all().delete()
         Product.objects.all().delete()

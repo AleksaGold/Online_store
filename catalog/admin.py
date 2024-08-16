@@ -5,6 +5,8 @@ from catalog.models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    """Класс для настройки отображения модели "Категории" в административной панели"""
+
     list_display = (
         "pk",
         "name",
@@ -13,6 +15,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    """Класс для настройки отображения модели "Продукты" в административной панели"""
+
     list_display = (
         "pk",
         "name",
