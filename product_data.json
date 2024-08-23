@@ -8,8 +8,8 @@
       "photo": "",
       "category": 1,
       "price": 250,
-      "created_at": "2024-08-16",
-      "updated_at": "2024-08-16"
+      "created_at": "2024-08-22",
+      "updated_at": "2024-08-22"
     }
   },
   {
@@ -21,21 +21,47 @@
       "photo": "",
       "category": 2,
       "price": 350,
-      "created_at": "2024-08-16",
-      "updated_at": "2024-08-16"
+      "created_at": "2024-08-22",
+      "updated_at": "2024-08-22"
     }
   },
   {
     "model": "catalog.product",
-    "pk": 4,
+    "pk": 3,
     "fields": {
       "name": "Малина",
       "description": "Малина лесная",
       "photo": "",
       "category": 3,
       "price": 500,
-      "created_at": "2024-08-16",
-      "updated_at": "2024-08-16"
+      "created_at": "2024-08-22",
+      "updated_at": "2024-08-22"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Редиска",
+      "description": "Редиска весенняя",
+      "photo": "products/Редиска.jpg",
+      "category": 1,
+      "price": 200,
+      "created_at": "2024-08-22",
+      "updated_at": "2024-08-22"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Томат",
+      "description": "Томат прямиком из Узбекистана",
+      "photo": "products/помидоры-узбекские.jpg",
+      "category": 1,
+      "price": 480,
+      "created_at": "2024-08-23",
+      "updated_at": "2024-08-23"
     }
   }
 ]
