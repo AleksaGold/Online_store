@@ -1,0 +1,27 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<main class="container">
+{% include 'includes/inc_blog.html' %}
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <p class="fs-3"> {{ object.title }}</p>
+          <p class="card-text mb-auto">{{ object.content }}</p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+           <img class="bd-placeholder-img" width="250" height="250" src="{{ object.preview  | media_filter }}"</img>
+        </div>
+        <div style="text-align:center">
+        <p>
+          <a class="btn btn-secondary my-2" href="{% url 'blog:article_list' %}">Назад</a>
+          <a class="btn btn-secondary my-2" href="{% url 'blog:article_update' object.pk %}">Редактировать</a>
+          <a class="btn btn-secondary my-2" href="{% url 'blog:article_delete' object.pk %}">Удалить</a>
+        <p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
