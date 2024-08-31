@@ -19,6 +19,9 @@
           <a class="btn btn-secondary my-2" href="{% url 'blog:article_update' object.pk %}">Редактировать</a>
           <a class="btn btn-secondary my-2" href="{% url 'blog:article_delete' object.pk %}">Удалить</a>
         <p>
+          <div class="card-footer">
+          Просмотры: {{ object.views_count }}
+        </div>
         </div>
       </div>
     </div>
