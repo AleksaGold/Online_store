@@ -7,7 +7,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-
+from pytils.translit import slugify
 
 from blog.models import Blog
 
@@ -16,6 +16,14 @@ class BlogCreateView(CreateView):
     model = Blog
     fields = ("title", "content", "preview")
     success_url = reverse_lazy("blog:article_list")
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_article = form.save()
+            new_article.slug = slugify(new_article.title)
+            new_article.save()
+
+        return super().form_valid(form)
 
 
 class BlogListView(ListView):
@@ -41,6 +49,14 @@ class BlogUpdateView(UpdateView):
     model = Blog
     fields = ("title", "content", "preview")
     success_url = reverse_lazy("blog:article_list")
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_article = form.save()
+            new_article.slug = slugify(new_article.title)
+            new_article.save()
+
+        return super().form_valid(form)
 
 
 class BlogDeleteView(DeleteView):
