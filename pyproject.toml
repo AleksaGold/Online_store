@@ -13,6 +13,8 @@ pillow = "^10.4.0"
 black = "^24.8.0"
 ipython = "^8.26.0"
 pytils = "^0.4.1"
+crispy-bootstrap5 = "^2024.2"
+django-crispy-forms = "^2.3"
 
 
 [build-system]

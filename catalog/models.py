@@ -65,7 +65,7 @@ class Version(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Продукт",
         related_name="product",
-        ** NULLABLE
+        **NULLABLE,
     )
 
     class Meta:

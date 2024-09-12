@@ -34,10 +34,5 @@ class ProductAdmin(admin.ModelAdmin):
 class VersionAdmin(admin.ModelAdmin):
     """Класс для настройки отображения модели "Версии продукта" в административной панели"""
 
-    list_display = (
-        "pk",
-        "version_number",
-        "name",
-        "is_current_version",
-    )
+    list_display = ("pk", "version_number", "name", "is_current_version", "product")
     list_filter = ("is_current_version",)
