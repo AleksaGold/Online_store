@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from catalog.models import Category, Product
+from catalog.models import Category, Product, Version
 
 
 @admin.register(Category)
@@ -28,3 +28,16 @@ class ProductAdmin(admin.ModelAdmin):
         "name",
         "description",
     )
+
+
+@admin.register(Version)
+class VersionAdmin(admin.ModelAdmin):
+    """Класс для настройки отображения модели "Версии продукта" в административной панели"""
+
+    list_display = (
+        "pk",
+        "version_number",
+        "name",
+        "is_current_version",
+    )
+    list_filter = ("is_current_version",)

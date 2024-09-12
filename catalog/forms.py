@@ -1,19 +1,23 @@
 from django import forms
 
-from catalog.models import Product
+from catalog.models import Product, Version
 
-FORBIDDEN_WORDS = ["казино",
-                   "криптовалюта",
-                   "крипта",
-                   "биржа",
-                   "дешево",
-                   "бесплатно",
-                   "обман",
-                   "полиция",
-                   "радар"]
+FORBIDDEN_WORDS = [
+    "казино",
+    "криптовалюта",
+    "крипта",
+    "биржа",
+    "дешево",
+    "бесплатно",
+    "обман",
+    "полиция",
+    "радар",
+]
 
 
 class ProductForm(forms.ModelForm):
+    """Класс для создания форм продукта"""
+
     class Meta:
         model = Product
         fields = "__all__"
@@ -28,3 +32,11 @@ class ProductForm(forms.ModelForm):
                 raise forms.ValidationError(
                     "Название и описание продукта не должны содержать запрещенные слова"
                 )
+
+
+class VersionForm(forms.ModelForm):
+    """Класс для создания форм версий продукта"""
+
+    class Meta:
+        model = Version
+        fields = "__all__"
