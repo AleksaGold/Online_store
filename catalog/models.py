@@ -54,7 +54,7 @@ class Product(models.Model):
 class Version(models.Model):
     """Класс для описания модели "Версии продукта" """
 
-    version_number = models.PositiveIntegerField(default=1, verbose_name="Номер версии")
+    version_number = models.PositiveIntegerField(verbose_name="Номер версии")
     name = models.CharField(max_length=150, verbose_name="Название версии")
     is_current_version = models.BooleanField(
         default=False, verbose_name="Текущая версия"

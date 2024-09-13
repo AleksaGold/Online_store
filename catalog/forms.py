@@ -53,4 +53,4 @@ class VersionForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Version
-        fields = "__all__"
+        fields = "version_number", "name", "is_current_version"
