@@ -7,11 +7,15 @@ from catalog.models import NULLABLE
 
 class User(AbstractUser):
     username = None
-    email = models.EmailField(unique=True, verbose_name='Email')
+    email = models.EmailField(unique=True, verbose_name="Email")
 
-    avatar = models.ImageField(upload_to='user_avatar/', verbose_name="Аватар", **NULLABLE)
-    phone_number = PhoneNumberField(verbose_name='Номер телефона', **NULLABLE)
-    country = models.CharField(max_length=150, verbose_name='Страна', **NULLABLE)
+    avatar = models.ImageField(
+        upload_to="user_avatar/", verbose_name="Аватар", **NULLABLE
+    )
+    phone_number = PhoneNumberField(verbose_name="Номер телефона", **NULLABLE)
+    country = models.CharField(max_length=150, verbose_name="Страна", **NULLABLE)
+
+    token = models.CharField(max_length=100, verbose_name="Токен", **NULLABLE)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
