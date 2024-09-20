@@ -1,5 +1,7 @@
 import secrets
 
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -8,6 +10,7 @@ from django.views.generic import CreateView, TemplateView
 from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm
 from users.models import User
+from users.utils import generate_password
 
 
 class UserCreateView(CreateView):
@@ -41,3 +44,37 @@ def email_verification(request, token):
 
 class EmailConfirmView(TemplateView):
     template_name = "users/email_confirm.html"
+
+
+class UserPasswordResetView(PasswordResetView):
+    model = User
+    form_class = PasswordResetForm
+    success_url = reverse_lazy("users:password_reset")
+
+    def form_valid(self, form: User):
+        if self.request.method == 'POST':
+            email = self.request.POST['email']
+            try:
+                user = User.objects.get(email=email)
+                password = generate_password(10)
+                user.password = password
+                user.set_password(password)
+                user.save()
+                send_mail(
+                    subject="Ларёк - восстановление пароля",
+                    message=f"Привет, {user.email}! Это твой новый пароль для входа в интернет-магазине Ларёк - {password}",
+                    from_email=EMAIL_HOST_USER,
+                    recipient_list=[user.email],
+                )
+                return redirect(reverse("users:new_password"))
+            except:
+                return redirect(reverse("users:email_not_found"))
+        return super().form_valid(form)
+
+
+class NewPasswordView(TemplateView):
+    template_name = "users/new_password.html"
+
+
+class EmailNotFoundView(TemplateView):
+    template_name = "users/email_not_found.html"
