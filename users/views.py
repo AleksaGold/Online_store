@@ -52,8 +52,8 @@ class UserPasswordResetView(PasswordResetView):
     success_url = reverse_lazy("users:password_reset")
 
     def form_valid(self, form: User):
-        if self.request.method == 'POST':
-            email = self.request.POST['email']
+        if self.request.method == "POST":
+            email = self.request.POST["email"]
             try:
                 user = User.objects.get(email=email)
                 password = generate_password(10)
@@ -67,7 +67,7 @@ class UserPasswordResetView(PasswordResetView):
                     recipient_list=[user.email],
                 )
                 return redirect(reverse("users:new_password"))
-            except:
+            except Exception:
                 return redirect(reverse("users:email_not_found"))
         return super().form_valid(form)
 
