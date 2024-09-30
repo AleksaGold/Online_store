@@ -48,6 +48,8 @@ class Product(models.Model):
         related_name="user",
     )
 
+    is_published = models.BooleanField(default=False, verbose_name="Опубликовано")
+
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
@@ -55,6 +57,11 @@ class Product(models.Model):
             "name",
             "updated_at",
         )
+        permissions = [
+            ("can_cancel_publication", "Can cancel publication"),
+            ("can_change_description", "Can change description"),
+            ("can_change_category", "Can change category"),
+        ]
 
     def __str__(self):
         return f"{self.name} {self.category} {self.price}"

@@ -48,6 +48,14 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
                 )
 
 
+class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
+    """Класс для создания формы продукта для модератора"""
+
+    class Meta:
+        model = Product
+        fields = ("is_published", "description", "category")
+
+
 class VersionForm(StyleFormMixin, forms.ModelForm):
     """Класс для создания форм версий продукта"""
 
