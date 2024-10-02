@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import BooleanField
 
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
 
 FORBIDDEN_WORDS = [
     "казино",
@@ -62,3 +62,11 @@ class VersionForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Version
         fields = "version_number", "name", "is_current_version"
+
+
+class CategoryForm(forms.ModelForm):
+    """Класс для создания формы категорий"""
+
+    class Meta:
+        model = Category
+        fields = "__all__"
